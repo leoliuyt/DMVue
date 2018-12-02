@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Vue生命周期</title>
+        <script src="./vue.js"></script>
+    </head>
+<body>
+    <div id="app">
+        {{content}}
+    </div>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data: {
+                content: 'hello world1'
+            },
+            beforeCreate() {
+                console.log("beforeCreate")    
+            },
+            created() {
+                console.log("created")
+            },
+            beforeMount() {//插值表达式中的值未被替换
+                console.log(this.$el)
+                console.log("beforeMount") 
+            },
+            mounted() {//插值表达式中的值已被替换
+                console.log(this.$el)
+                console.log("mounted") 
+            },
+            beforeDestroy() {
+                console.log("beforeDestroy")
+            },
+            destroyed() {
+                console.log("destroyed")
+            },
+            beforeUpdate() {//data中值发生改变时被触发
+                console.log("beforeUpdate")
+            },
+            updated() {
+                console.log("updated")
+            },
+
+        })
+    </script>
+
+</body>
+</html>

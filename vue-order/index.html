@@ -29,6 +29,13 @@
             <p v-if="seen" @click="handleSeenClick">现在你看到我了</p>
         </div>
 
+        <div>
+            <p v-text="vtext + ' text'" ></p>
+        </div>
+        <div>
+            <div v-html="vhtml + ' text'" ></div> 
+        </div>
+
     </div>
     <script>
         // 全局组件
@@ -56,7 +63,9 @@
                 list: [],
                 inputValue: '',
                 tip:'页面加载于 ' + new Date().toLocaleString(),
-                seen: true
+                seen: true,
+                vtext: "<h1>v-text</h1>",
+                vhtml: "<h1>v-html</h1>"
             },
             methods:{
                 handBtnClick: function(){

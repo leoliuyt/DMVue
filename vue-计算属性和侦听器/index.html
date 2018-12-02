@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Vue计算属性和侦听器</title>
+        <script src="./vue.js"></script>
+    </head>
+<body>
+    <div id="app">
+        {{fullName}}
+        {{age}}
+    </div>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data: {
+                firstName: "Leo",
+                lastName: "liu",
+                fullName: "Leo liu",
+                age: 18
+            },
+            //侦听器
+            watch:{
+                firstName: function(){
+                    console.log("firstName计算了一次")
+                    this.fullName = this.firstName + " " + this.lastName
+                },
+                lastName: function(){
+                    console.log("lastName计算了一次")
+                    this.fullName = this.firstName + " " + this.lastName
+                }
+            }
+            // methods:{
+            //     fullName: function(){
+            //         console.log("计算了一次")
+            //         return this.firstName + " " + this.lastName
+            //     }
+            // },
+            // 计算属性
+            // computed:{
+            //     fullName: function(){
+            //         console.log("计算了一次")
+            //         return this.firstName + " " + this.lastName
+            //     }
+            // }
+
+        })
+    </script>
+    <!-- 
+        笔记：
+        计算属性内置缓存，
+        如果firstName或lastName不发生变化，fullName不会重新计算
+        firstName或lastName任意一个发生变化，都会使fullName重新计算
+
+        watch 也具备缓存机制
+     -->
+
+</body>
+</html>

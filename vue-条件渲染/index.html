@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>条件渲染</title>
+        <script src="./vue.js"></script>
+        <style>
+            
+        </style>
+    </head>
+<body>
+    <div id="app">
+        <div v-if="show" @click="handleDiv">
+            条件渲染v-if
+        </div>
+        <div v-show="show" @click="handleDiv">
+                条件渲染v-show----display: none;
+        </div>
+
+        <div v-if="showIf=='a'" @click="handleDivIf">
+                条件渲染v-if
+        </div>
+        <div v-else-if="showIf=='b'" @click="handleDivIf">
+                条件渲染v-else-if
+        </div>
+        <div v-else @click="handleDivIf">
+                条件渲染v-else
+        </div>
+
+        <div v-if="showKey" >
+            <p @click="handleKey">用户名:</p><input key="userName" />
+        </div>
+        <div v-else>
+            <p @click="handleKey">邮箱名:</p><input key="emailName" />
+        </div>
+    
+    </div>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data: {
+                show: true,
+                showKey:true,
+                showIf: 'a'
+            },
+            methods: {
+                handleDiv:function(){
+                    this.show = !this.show
+                },
+                handleKey:function(){
+                    this.showKey = !this.showKey
+                },
+                handleDivIf:function(){
+                    if (this.showIf == 'a'){
+                        this.showIf = 'b'
+                    } else if(this.showIf == 'b'){
+                        this.showIf = 'c'
+                    } else {
+                        this.showIf = 'a'
+                    }
+                }
+            }
+        })
+    </script>
+
+    <!-- 
+        笔记
+       
+     -->
+
+
+</body>
+</html>
